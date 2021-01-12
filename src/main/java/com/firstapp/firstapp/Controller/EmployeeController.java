@@ -46,8 +46,6 @@ public class EmployeeController {
     public Employee updateEmployee(@PathVariable String id,@RequestBody Employee employee){
         Employee employee1=employeeRepository.getOne(id);
         employee1.setFirstName(employee.getFirstName());
-        employee1.setLastName(employee.getLastName());
-        employee1.setPhoneNumber(employee.getPhoneNumber());
         return employeeRepository.save(employee1);
     }
 
@@ -71,7 +69,7 @@ public class EmployeeController {
     }
     @GetMapping("/employee/{id}/address")
     public EmployeeAddress getAddress(@PathVariable String id){
-        return employeeAddressRepository.findById(id).get();
+        return employeeAddressRepository.findByEmployeeId(id);
     }
     @PostMapping("/employee/{id}/detail")
     public EmployeeDetail createEmployeeDetail(@PathVariable String id,@RequestBody EmployeeDetail employeeDetail){
@@ -88,7 +86,7 @@ public class EmployeeController {
     }
     @GetMapping("/employee/{id}/detail")
     public EmployeeDetail getDetail(@PathVariable String id){
-        return employeeDetailRepository.findById(id).get();
+        return employeeDetailRepository.findByEmployeeId(id);
     }
     @PostMapping("/employee/{id}/educationalInfo")
     public EmployeeEducationalInfo createEmployeeEducationalInfo(@PathVariable String id,@RequestBody EmployeeEducationalInfo employeeEducationalInfo){
@@ -104,6 +102,6 @@ public class EmployeeController {
     }
     @GetMapping("/employee/{id}/educationalInfo")
     public EmployeeEducationalInfo getAddressInfo(@PathVariable String id){
-        return employeeEducationalInfoRepository.findById(id).get();
+        return employeeEducationalInfoRepository.findByEmployeeId(id);
     }
 }

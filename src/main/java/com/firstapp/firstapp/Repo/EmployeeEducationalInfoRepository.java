@@ -4,4 +4,5 @@ import com.firstapp.firstapp.Model.EmployeeEducationalInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeEducationalInfoRepository extends JpaRepository<EmployeeEducationalInfo,String> {
+    EmployeeEducationalInfo findByEmployeeId(String id);
 }
